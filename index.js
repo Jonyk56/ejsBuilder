@@ -2,11 +2,11 @@ const ejs_ = require("ejs")
 const Fs = require('@supercharge/filesystem')
 const path = require("path")
 class ejsBuilder {
+	ejs = ejs_
 	#ejsInstance = {}
 	#ejsOptions = {};
 	#ejsData = {};
 	constructor(){}  //---- Blank for now
-
 	//setInput: Sets input location/data. the builder will use #getInputInternal to determine if it is a file later on.
 	setInput(data){
 		this.#ejsInstance.inputLoc = data;
@@ -30,12 +30,6 @@ class ejsBuilder {
 	getDataValues(){
 		return this.#ejsData
 	}
-	//internal
-	async #getInputInternal(){
-		let file = 0;
-		if(Fs.isFile(this.#ejsInstance.inputLoc) ) console.log("1");
-		return [this.#ejsInstance.inputLoc, file]
-	}
 	//set compile/render option
 	setOption(option,value){
 		this.#ejsOptions[option] = value;
@@ -50,7 +44,7 @@ class ejsBuilder {
 		var rendered = 0
 		try{
 			var inputDat = this.getInput();
-			rendered = ejs_.render(inputDat, this.#ejsData, this.#ejsOptions)
+			rendered = this.ejs.render(inputDat, this.#ejsData, this.#ejsOptions)
 		}
 		catch(err){
 			return err
@@ -60,8 +54,16 @@ class ejsBuilder {
 	renderFile(callback = (err,dat) => this.out = dat){
 		var inputDat = this.getInput();
 		var rendered = 0;
-		ejs_.renderFile(inputDat,this.#ejsData,this.#ejsOptions, callback)
+		this.ejs.renderFile(inputDat,this.#ejsData,this.#ejsOptions, callback)
 		return this.out
+	}
+
+	clearCache(){
+		this.ejs.clearCache()
+	}
+	setFileLoader(loaderfunc){
+		ejs_.fileLoader = loaderfunc;
+		return this;
 	}
 }
 
