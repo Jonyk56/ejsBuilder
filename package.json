@@ -6,11 +6,10 @@
   "scripts": {
     "test": "node test"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": ["ejs"],
+  "author": "jonyk56",
   "license": "ISC",
   "dependencies": {
-    "@supercharge/filesystem": "^2.3.0",
     "@types/node": "^18.0.6",
     "ejs": "^3.1.9",
     "node-fetch": "^3.2.6"
