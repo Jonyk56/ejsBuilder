@@ -6,4 +6,4 @@ console.log(x.render())
 x.setInput("./test.ejs")
 console.log(x.renderFile());
 x.setOption("delimiter", '$')
-console.log(x.renderFile())
+x.renderFile((err,dat) => console.log(dat))

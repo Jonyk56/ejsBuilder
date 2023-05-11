@@ -46,9 +46,7 @@ class ejsBuilder {
 	getOption(option){
 		return this.#ejsOptions[option];
 	}
-
-
-	async render(){
+	render(){
 		var rendered = 0
 		try{
 			var inputDat = this.getInput();
@@ -59,11 +57,11 @@ class ejsBuilder {
 		}
 		return rendered
 	}
-	renderFile(){
+	renderFile(callback = (err,dat) => this.out = dat){
 		var inputDat = this.getInput();
 		var rendered = 0;
-		ejs_.renderFile(inputDat,this.#ejsData,this.#ejsOptions, (err, dat) => rendered = dat)
-		return rendered
+		ejs_.renderFile(inputDat,this.#ejsData,this.#ejsOptions, callback)
+		return this.out
 	}
 }
 

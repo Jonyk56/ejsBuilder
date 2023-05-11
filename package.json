@@ -1,7 +1,7 @@
 {
-  "name": "nodejs",
-  "version": "1.0.0",
-  "description": "",
+  "name": "ejs-builder",
+  "version": "1.0.1",
+  "description": "puts ejs into a nice little class you can do anything with!",
   "main": "index.js",
   "scripts": {
     "test": "node test"
