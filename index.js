@@ -59,6 +59,12 @@ class ejsBuilder {
 		}
 		return rendered
 	}
+	renderFile(){
+		var inputDat = this.getInput();
+		var rendered = 0;
+		ejs_.renderFile(inputDat,this.#ejsData,this.#ejsOptions, (err, dat) => rendered = dat)
+		return rendered
+	}
 }
 
 module.exports = ejsBuilder;
