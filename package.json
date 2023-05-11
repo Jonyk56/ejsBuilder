@@ -1,6 +1,6 @@
 {
   "name": "ejs-builder",
-  "version": "1.0.1",
+  "version": "1.02-stable",
   "description": "puts ejs into a nice little class you can do anything with!",
   "main": "index.js",
   "scripts": {
