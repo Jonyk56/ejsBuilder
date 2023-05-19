@@ -1,5 +1,4 @@
 const ejs_ = require("ejs")
-const Fs = require('@supercharge/filesystem')
 const path = require("path")
 class ejsBuilder {
 	ejs = ejs_
